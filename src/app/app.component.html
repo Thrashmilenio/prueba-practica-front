@@ -1,0 +1,18 @@
+<header>
+  <ul>
+    <li><a [routerLink]="['/crear-personas']" [routerLinkActive]="['actived']">Crear Registro</a></li>
+    <li><a [routerLink]="['/personas']" [routerLinkActive]="['actived']">Consultar Registro</a></li>
+<!--    <li id="logo"><a href="#">VR</a></li>-->
+    <li><a [routerLink]="['/NA']" [routerLinkActive]="['actived']">N/A</a></li>
+    <li><a [routerLink]="['/NA']" [routerLinkActive]="['actived']">N/A</a></li>
+  </ul>
+</header>
+
+<section id="content">
+  <router-outlet></router-outlet>
+</section>
+
+<footer style='text-align: center'>
+  Prueba practica para valid.com &copy;
+</footer>
+

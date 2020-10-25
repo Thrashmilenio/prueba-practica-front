@@ -1,0 +1,41 @@
+<div class="container">
+	<h2>Personas</h2>
+	<table class="table table-striped" [mfData]="personas | dataFilter : filterQuery" #mf="mfDataTable"
+		   [mfRowsOnPage]="rowsOnPage">
+		<thead>
+		<tr>
+			<th style="width: 10%"></th>
+			<th style="width: 10%">
+				<mfDefaultSorter by="id">Id</mfDefaultSorter>
+			</th>
+			<th style="width: 20%">
+				<mfDefaultSorter by="nombre">Nombre</mfDefaultSorter>
+			</th>
+			<th style="width: 20%">
+				<mfDefaultSorter by="apellido">Apellido</mfDefaultSorter>
+			</th>
+			<th style="width: 20%">
+				<mfDefaultSorter by="procesar">Procesar</mfDefaultSorter>
+			</th>
+		</tr>
+		<tr>
+			<th colspan="5">
+				Filter by name:
+				<input class="form-control" [(ngModel)]="filterQuery"/>
+			</th>
+		</tr>
+		</thead>
+		<tbody>
+		<tr *ngFor="let persona of personas">
+			<td>
+				<a [routerLink]="['/editar-personas', persona.id]" class="btn btn-primary fas fa-edit">Editar</a>
+			</td>
+			<td>{{persona.id}}</td>
+			<td>{{persona.nombre}}</td>
+			<td>{{persona.apellido}}</td>
+			<td>{{persona.procesado}}</td>
+		</tr>
+		</tbody>
+	</table>
+	<button (click)="onProcess()" class="btn btn-primary fas fa-eraser">Procesar</button>
+</div>

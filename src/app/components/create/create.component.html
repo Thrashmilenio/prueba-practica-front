@@ -1,0 +1,31 @@
+<div class="container" *ngIf="persona">
+	<h2>{{title}}</h2>
+
+	<div class="message success" *ngIf="status == 'success'">
+		La persona se ha creado correctamente, puedes <a [routerLink]="['/personas']">verlo aquí</a>
+	</div>
+
+	<div class="message failed" *ngIf="status == 'failed'">
+		La persona NO SE HA PODIDO CREAR
+	</div>
+
+	<form #projectForm="ngForm" (ngSubmit)="onSubmit(projectForm)">
+		<p>
+			<label for="nombre">Nombre</label>
+			<input type="text" name="nombre" #nombre="ngModel" [(ngModel)]="persona.nombre" required />
+			<span class="form_error" *ngIf="nombre.touched && !nombre.valid">
+				El nombre es obligatorio
+			</span>
+		</p>
+
+		<p>
+			<label for="apellido">Apellido</label>
+			<input type="text" name="apellido" #apellido="ngModel" [(ngModel)]="persona.apellido" required />
+			<span class="form_error" *ngIf="apellido.touched && !apellido.valid">
+				El apellido es obligatorio
+			</span>
+		</p>
+
+		<input type="submit" value="Enviar" [disabled]="!projectForm.form.valid" />
+	</form>
+</div>
